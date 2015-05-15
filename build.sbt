@@ -29,3 +29,6 @@ libraryDependencies += "org.jboss.resteasy" % "resteasy-jaxrs" % "3.0.11.Final"
 
 libraryDependencies += "org.jboss.resteasy" % "resteasy-jackson2-provider" % "3.0.11.Final"
 
+
+
+fork in run := true

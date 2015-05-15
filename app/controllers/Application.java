@@ -1,14 +1,20 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security;
+import services.auth.TokenAuthenticator;
+import views.html.index;
 
 public class Application extends Controller {
 
     public static Result index() {
         return ok(index.render("Your new application is ready."));
+    }
+
+    @Security.Authenticated(TokenAuthenticator.class)
+    public static Result indexTest() {
+        return ok(index.render("Authorized with token: our new application is ready."));
     }
 
 }
