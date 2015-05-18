@@ -12,6 +12,9 @@ POST           /profiles/business               controllers.ProfileServiceConnec
 PUT           /profiles/business                controllers.ProfileServiceConnector.putProfile()
 DELETE           /profiles/business             controllers.ProfileServiceConnector.deleteProfile()
 
+# Map the JS resource paths
+GET         /*file                  controllers.Assets.versioned(path="/public", file: Asset)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file        controllers.Assets.at(path="/public", file)
