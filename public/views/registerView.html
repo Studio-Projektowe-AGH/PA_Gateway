@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="card card-container">
+        <img id="profile-img" class="logo-img-card" src="pictures/logo.png"/>
+        <p id="profile-name" class="profile-name-card"></p>
+
+        <form name="registerForm" class="form-signin"  novalidate>
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="text" name="user" ng-model="name" placeholder="Username" class="form-control" ng-minlength="4" required/>
+                <div class="validation-error"
+                     ng-show="(registerForm.user.$dirty || invalidSubmitAttempt) && registerForm.user.$error.required">
+                    Login is required.
+                </div>
+                <div class="validation-error"
+                     ng-show="registerForm.user.$dirty &&  registerForm.user.$error.minlength">
+                    Login must be at least 4 characters long.
+                </div>
+            <input type="text" name="compName" ng-model="compName" placeholder="Company Name" class="form-control"  required />
+                <div class="validation-error"
+                     ng-show="(registerForm.compName.$dirty || invalidSubmitAttempt) && registerForm.compName.$error.required">
+                    Company Name is required.
+                </div>
+            <input type="email" name="email" ng-model="user.email" placeholder="Email address" class="form-control" required />
+                <div class="validation-error"
+                     ng-show="(registerForm.email.$dirty || invalidSubmitAttempt) && registerForm.email.$error.required">
+                    Email is required.
+                </div>
+                <div class="validation-error"
+                     ng-show="registerForm.email.$dirty && registerForm.email.$error.email">
+                    Invalid email address.
+                </div>
+            <input type="password" name="password" ng-model="user.password" placeholder="Password" class="form-control" ng-minlength="6" required />
+                <div class="validation-error"
+                     ng-show="(registerForm.password.$dirty || invalidSubmitAttempt) && registerForm.password.$error.required">
+                    Password is required.
+                </div>
+                <div class="validation-error"
+                     ng-show="registerForm.password.$dirty && registerForm.password.$error.minlength">
+                    Password must be at least 6 characters long.
+                </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block btn-signin"  type="submit" ng-click="register()">Register</button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <fb:login-button   size="xlarge" scope="public_profile,email"  onlogin="loginWithFB();">
+                    </fb:login-button>
+                </div>
+            </div>            <div class="alert alert-danger" ng-hide="info.length == 0">{{info}}</div>
+            <a href="#/login" class="create-account">
+                I've already have an account
+            </a>
+        </form>
+    </div>
+</div>
+
