@@ -3,18 +3,20 @@
 # ~~~~
 
 # Home page
-GET        /                    controllers.Application.index()
-GET        /authTest            controllers.Application.indexTest()
+GET           /                         controllers.Application.index()
+GET           /authTest                 controllers.Application.indexTest()
 
 
-GET           /profiles/business                controllers.ProfileServiceConnector.getProfile()
-POST           /profiles/business               controllers.ProfileServiceConnector.postProfile()
-PUT           /profiles/business                controllers.ProfileServiceConnector.putProfile()
-DELETE           /profiles/business             controllers.ProfileServiceConnector.deleteProfile()
+GET           /profiles/business        controllers.ProfileServiceConnector.getProfile()
+POST          /profiles/business        controllers.ProfileServiceConnector.postProfile()
+PUT           /profiles/business        controllers.ProfileServiceConnector.putProfile()
+DELETE        /profiles/business        controllers.ProfileServiceConnector.deleteProfile()
+
+GET           /profiles/individual        controllers.ProfileServiceConnector.getProfile()
 
 # Map the JS resource paths
 GET         /*file                  controllers.Assets.versioned(path="/public", file: Asset)
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.at(path="/public", file)
+GET           /assets/*file             controllers.Assets.at(path="/public", file)
