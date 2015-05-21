@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.ws.WS;
 import play.libs.ws.WSResponse;
+import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -17,10 +18,14 @@ public class AuthDispatcher extends Controller {
     public static Result dispatchRequest(String path) {
         JsonNode jsonNode = request().body().asJson();
 
-        WSResponse wsResponse = WS.url("http://partyadvisor.herokuapp.com" + path)
+        WSResponse wsResponse = WS.url("http://partyadvisor.herokuapp.com/" + path)
                 .post(jsonNode)
                 .get(TIMEOUT);
 
-        return ok(wsResponse.asJson());
+        return ok(new String(wsResponse.asByteArray()));
+    }
+
+    public static Result dispatchSocialRequest(String provider) {
+        return dispatchRequest(provider);
     }
 }
