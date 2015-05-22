@@ -74,10 +74,10 @@ angular.module('UserModule', [])
             // return $http.get('/api/do/username' + id).then(handleSuccess, handleError('Error getting user by id'));
         }
 
-        function GetBusinessProfile(token, successCallback) {
+        function GetBusinessProfile(access_token, successCallback) {
             alert("funkcja");
             console.log("funkcja");
-            return $http.get('/profiles/business' + token).then(successCallback, handleError('Error getting business profile'));
+            return $http.get('/profiles/business' + access_token).then(successCallback, handleError('Error getting business profile'));
         }
 
 
