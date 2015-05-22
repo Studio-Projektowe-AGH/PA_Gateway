@@ -10,12 +10,18 @@ POST          /auth/signup                    controllers.AuthDispatcher.dispatc
 POST          /auth/signin/credentials        controllers.AuthDispatcher.dispatchRequest(path: String ?= "auth/signin/credentials")
 POST          /auth/signin/:provider          controllers.AuthDispatcher.dispatchSocialRequest(provider)
 
+GET           /test/token/random              controllers.AuthDispatcher.testToken()
+
 GET           /profiles/business              controllers.ProfileServiceConnector.getProfile()
 POST          /profiles/business              controllers.ProfileServiceConnector.postProfile()
 PUT           /profiles/business              controllers.ProfileServiceConnector.putProfile()
 DELETE        /profiles/business              controllers.ProfileServiceConnector.deleteProfile()
+GET           /profiles/business/all          controllers.ProfileServiceConnector.getLocalList()
 
 GET           /profiles/individual            controllers.ProfileServiceConnector.getProfile()
+
+
+POST          /events/:action                 controllers.EventsDispatcher.dispatch(action)
 
 # Map the JS resource paths
 GET           /*file                          controllers.Assets.versioned(path="/public", file: Asset)

@@ -14,18 +14,23 @@ import play.mvc.Result;
  */
 public class AuthDispatcher extends Controller {
     private static final long TIMEOUT = 5000;
+    private static final String AUTH_URL = "http://powerful-temple-7548.herokuapp.com/";
 
     public static Result dispatchRequest(String path) {
-        JsonNode jsonNode = request().body().asJson();
-
-        WSResponse wsResponse = WS.url("http://partyadvisor.herokuapp.com/" + path)
-                .post(jsonNode)
-                .get(TIMEOUT);
-
-        return ok(new String(wsResponse.asByteArray()));
+        return ok(new String(JsonDispatcher.dispatchPostRequest(AUTH_URL + path).asByteArray()));
     }
 
     public static Result dispatchSocialRequest(String provider) {
-        return dispatchRequest(provider);
+        return dispatchRequest("auth/signin/" + provider);
+    }
+
+    public static Result testToken() {
+        WSResponse wsResponse = JsonDispatcher.dispatchGetRequest(AUTH_URL + "/test/token/random");
+        System.out.println("asd");
+        if (wsResponse.getStatus() != OK) {
+            return ok("Ege szege dreciokolo masajo osto kuto hojo todo buroki");
+        }
+
+        return ok(new String(wsResponse.asByteArray()));
     }
 }

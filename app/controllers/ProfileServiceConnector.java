@@ -10,7 +10,11 @@ import play.mvc.Result;
 import play.mvc.Security;
 import services.auth.TokenAuthenticator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static play.mvc.Controller.request;
+import static play.mvc.Http.Status.OK;
 import static play.mvc.Results.internalServerError;
 import static play.mvc.Results.ok;
 
@@ -19,7 +23,7 @@ import static play.mvc.Results.ok;
  * Created by Kris on 2015-05-15.
  */
 public class ProfileServiceConnector {
-    static String serviceUrl = "https://profile-service.herokuapp.com/profiles/";
+    static String serviceUrl = "https://goparty-profile.herokuapp.com/profiles/";
 
     @Security.Authenticated(TokenAuthenticator.class)
     public static Result getProfile() {
@@ -57,5 +61,17 @@ public class ProfileServiceConnector {
 
     public static Result deleteProfile() {
         return play.mvc.Results.TODO;
+    }
+
+    public static Result getLocalList() {
+        ArrayList<String> ids = new ArrayList<>(Arrays.asList("pierwszy", "drugi", "treci"));
+
+        WSResponse wsResponse = JsonDispatcher.dispatchGetRequest(serviceUrl + "business/all");
+        if (wsResponse.getStatus() != OK) {
+            return ok(Json.toJson(ids));
+        }
+//
+//        return ok(serviceUrl + "business/all" + wsResponse.getStatusText());
+        return ok(wsResponse.asJson());
     }
 }
