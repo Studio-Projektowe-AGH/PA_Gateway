@@ -76,7 +76,7 @@ angular.module('UserModule', [])
 
         function GetBusinessProfile(access_token, successCallback) {
             alert("funkcja");
-            return $http.get('/profiles/business/').then(successCallback, handleError('Error getting business profile'));
+            return $http.get('/profiles/business').then(successCallback, handleError('Error getting business profile'));
         }
 
 
