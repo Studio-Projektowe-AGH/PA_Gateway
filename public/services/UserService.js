@@ -75,7 +75,8 @@ angular.module('UserModule', [])
         }
 
         function GetBusinessProfile(successCallback) {
-            return $http.get('https://goparty-gateway.herokuapp.com/profiles/business').then(successCallback, handleError('Error getting business profile'));
+            alert("funkcja");
+            return $http.get('/profiles/business').then(successCallback, handleError('Error getting business profile'));
         }
 
 
