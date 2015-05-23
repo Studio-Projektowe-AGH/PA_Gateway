@@ -14,7 +14,7 @@ import play.mvc.Result;
  */
 public class AuthDispatcher extends Controller {
     private static final long TIMEOUT = 5000;
-    private static final String AUTH_URL = "http://powerful-temple-7548.herokuapp.com/";
+    private static final String AUTH_URL = "http://goparty-auth.herokuapp.com/";
 
     public static Result dispatchRequest(String path) {
         return ok(new String(JsonDispatcher.dispatchPostRequest(AUTH_URL + path).asByteArray()));
