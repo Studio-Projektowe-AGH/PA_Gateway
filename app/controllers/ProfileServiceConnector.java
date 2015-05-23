@@ -73,7 +73,7 @@ public class ProfileServiceConnector {
         }
 //
 //        return ok(serviceUrl + "business/all" + wsResponse.getStatusText());
-        response().setHeader("Access-Controll-Allow-Origin", "*");
+        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(wsResponse.asJson());
     }
 }

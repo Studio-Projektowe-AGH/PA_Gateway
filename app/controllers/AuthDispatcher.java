@@ -35,7 +35,7 @@ public class AuthDispatcher extends Controller {
         if (wsResponse.getStatus() != OK) {
             return ok("Ege szege dreciokolo masajo osto kuto hojo todo buroki");
         }
-        response().setHeader("Access-Controll-Allow-Origin", "*");
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(wsResponse.asJson());
     }
