@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static play.mvc.Controller.request;
+import static play.mvc.Controller.response;
 import static play.mvc.Http.Status.OK;
 import static play.mvc.Results.internalServerError;
 import static play.mvc.Results.ok;
@@ -47,7 +48,7 @@ public class ProfileServiceConnector {
         if(profileInJson != null){
             return ok(profileInJson);
         } else{
-            return internalServerError("Something went wrong: good token, but cannot retrieve data from Profile Service");
+            return internalServerError("Something went wrong: good token, but cannot retrieve data from Profile Service " + url);
         }
     }
 
@@ -72,6 +73,7 @@ public class ProfileServiceConnector {
         }
 //
 //        return ok(serviceUrl + "business/all" + wsResponse.getStatusText());
+        response().setHeader("Access-Controll-Allow-Origin", "*");
         return ok(wsResponse.asJson());
     }
 }

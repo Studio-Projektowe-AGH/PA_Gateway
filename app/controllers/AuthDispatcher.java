@@ -31,11 +31,11 @@ public class AuthDispatcher extends Controller {
     }
 
     public static Result testToken() {
-        WSResponse wsResponse = JsonDispatcher.dispatchGetRequest(AUTH_URL + "/test/token/random");
-        System.out.println("asd");
+        WSResponse wsResponse = JsonDispatcher.dispatchGetRequest(AUTH_URL + "test/token/random");
         if (wsResponse.getStatus() != OK) {
             return ok("Ege szege dreciokolo masajo osto kuto hojo todo buroki");
         }
+        response().setHeader("Access-Controll-Allow-Origin", "*");
 
         return ok(wsResponse.asJson());
     }
