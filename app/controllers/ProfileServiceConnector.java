@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static play.mvc.Controller.request;
-import static play.mvc.Controller.response;
 import static play.mvc.Http.Status.OK;
 import static play.mvc.Results.internalServerError;
 import static play.mvc.Results.ok;
@@ -35,8 +34,7 @@ public class ProfileServiceConnector {
                 new Function<WSResponse, JsonNode>() {
                     public JsonNode apply(WSResponse response) {
                         if(response.getStatus() == 200){
-                            JsonNode json = response.asJson();
-                            return json;
+                            return response.asJson();
                         }else {
                             System.out.println("Status: "+ response.getStatus());
                             return null;
@@ -71,9 +69,7 @@ public class ProfileServiceConnector {
         if (wsResponse.getStatus() != OK) {
             return ok(Json.toJson(ids));
         }
-//
-//        return ok(serviceUrl + "business/all" + wsResponse.getStatusText());
-        response().setHeader("Access-Control-Allow-Origin", "*");
+
         return ok(wsResponse.asJson());
     }
 }

@@ -1,9 +1,6 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import play.libs.ws.WS;
 import play.libs.ws.WSResponse;
-import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -13,7 +10,6 @@ import play.mvc.Result;
  * Dispatches requests to authentication service
  */
 public class AuthDispatcher extends Controller {
-    private static final long TIMEOUT = 5000;
     private static final String AUTH_URL = "http://goparty-auth.herokuapp.com/";
 
     public static Result dispatchRequest(String path) {
@@ -35,7 +31,6 @@ public class AuthDispatcher extends Controller {
         if (wsResponse.getStatus() != OK) {
             return ok("Ege szege dreciokolo masajo osto kuto hojo todo buroki");
         }
-        response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(wsResponse.asJson());
     }
