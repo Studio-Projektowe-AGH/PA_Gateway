@@ -17,7 +17,13 @@ public class AuthDispatcher extends Controller {
     private static final String AUTH_URL = "http://goparty-auth.herokuapp.com/";
 
     public static Result dispatchRequest(String path) {
-        return ok(new String(JsonDispatcher.dispatchPostRequest(AUTH_URL + path).asByteArray()));
+        WSResponse wsResponse = JsonDispatcher.dispatchPostRequest(AUTH_URL + path);
+
+        if (wsResponse.getStatus() == OK) {
+            return ok(wsResponse.asJson());
+        }
+
+        return internalServerError(new String(wsResponse.asByteArray()));
     }
 
     public static Result dispatchSocialRequest(String provider) {
@@ -31,6 +37,6 @@ public class AuthDispatcher extends Controller {
             return ok("Ege szege dreciokolo masajo osto kuto hojo todo buroki");
         }
 
-        return ok(new String(wsResponse.asByteArray()));
+        return ok(wsResponse.asJson());
     }
 }
