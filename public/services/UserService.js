@@ -75,7 +75,7 @@ angular.module('UserModule', [])
         }
 
         function GetBusinessProfile(successCallback) {
-            alert("funkcja");
+            //alert("funkcja");
             return $http.get('/profiles/business').then(successCallback, handleError('Error getting business profile'));
         }
 
