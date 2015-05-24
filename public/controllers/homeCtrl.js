@@ -10,15 +10,10 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 $scope.user = response;
                 console.log("UserService success");
                 console.log($scope.user);
-                console.log("$scope.user.response");
-                console.log($scope.user.response);
-                //console.log($scope.data.response);
-                //
-                //console.log($scope.data.response.id);
 
-                $scope.temp = angular.fromJson($scope.user.response);
+                $scope.temp = angular.fromJson($scope.user.name);
                 console.log("nazwa");
-                console.log($scope.temp.name);
+                console.log($scope.temp);
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]
