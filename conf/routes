@@ -17,10 +17,10 @@ POST          /auth/signin/:provider          controllers.AuthDispatcher.dispatc
 GET           /test/token/random              controllers.AuthDispatcher.testToken()
 
 #### Dostêp do danych
-GET           /profiles                       controllers.ProfileServiceConnector.profile(enums.Method.GET)
-POST          /profiles                       controllers.ProfileServiceConnector.profile(enums.Method.POST)
-DELETE        /profiles                       controllers.ProfileServiceConnector.profile(enums.Method.DELETE)
-PUT           /profiles                       controllers.ProfileServiceConnector.profile(enums.Method.PUT)
+GET           /profile                        controllers.ProfileServiceConnector.profile(enums.Method.GET)
+POST          /profile                        controllers.ProfileServiceConnector.profile(enums.Method.POST)
+DELETE        /profile                        controllers.ProfileServiceConnector.profile(enums.Method.DELETE)
+PUT           /profile                        controllers.ProfileServiceConnector.profile(enums.Method.PUT)
 
 ###### Testowe usugi
 GET           /profiles/business/all          controllers.ProfileServiceConnector.getLocalList()
