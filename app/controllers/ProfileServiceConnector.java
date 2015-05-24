@@ -1,7 +1,6 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import enums.Method;
 import play.libs.F.Function;
 import play.libs.F.Promise;
 import play.libs.Json;
@@ -14,56 +13,23 @@ import services.auth.TokenAuthenticator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static play.mvc.Controller.request;
 import static play.mvc.Controller.response;
 import static play.mvc.Http.Status.OK;
-import static play.mvc.Results.*;
+import static play.mvc.Results.ok;
 
 
 /**
  * Created by Kris on 2015-05-15.
+ *
+ * Remade by Marek
  */
 public class ProfileServiceConnector {
     private static final long TIMEOUT = 60000;
     static String serviceUrl = "https://goparty-profile.herokuapp.com/profiles/";
-
-    @Security.Authenticated(TokenAuthenticator.class)
-    public static Result getProfile() {
-        JsonNode userIds = Json.parse(request().username());
-        String url = serviceUrl + userIds.get("userRole").asText() +"/" + userIds.get("userId").asText();
-        System.out.println("Sciezka ktora pytamy: " +url);
-        Promise<JsonNode> jsonPromise = WS.url(url).get().map(
-                new Function<WSResponse, JsonNode>() {
-                    public JsonNode apply(WSResponse response) {
-                        if(response.getStatus() == 200){
-                            return response.asJson();
-                        }else {
-                            System.out.println("Status: "+ response.getStatus());
-                            return null;
-                        }
-                    }
-                }
-        );
-        JsonNode profileInJson = jsonPromise.get(4000L);
-        if(profileInJson != null){
-            return ok(profileInJson);
-        } else{
-            return internalServerError("Something went wrong: good token, but cannot retrieve data from Profile Service " + url);
-        }
-    }
-
-    public static Result postProfile() {
-        return play.mvc.Results.TODO;
-    }
-
-    public static Result putProfile() {
-        return play.mvc.Results.TODO;
-    }
-
-    public static Result deleteProfile() {
-        return play.mvc.Results.TODO;
-    }
 
     public static Result getLocalList() {
         ArrayList<String> ids = new ArrayList<>(Arrays.asList("pierwszy", "drugi", "treci"));
@@ -77,24 +43,54 @@ public class ProfileServiceConnector {
         return ok(wsResponse.asJson());
     }
 
+    interface MethodApplier {
+        Promise<WSResponse> applyMethod(WSRequestHolder requestHolder);
+    }
+
     @Security.Authenticated(TokenAuthenticator.class)
-    public static Result profile(Method method) {
+    public static Result profile(MethodApplier method) {
         JsonNode user = Json.parse(request().username());
 
         String queryUrl = serviceUrl + user.get("userRole").asText() + "/" + user.get("userId").asText();
 
-        WSRequestHolder requestHolder = WS.url(queryUrl);
+        Promise<WSResponse> promise = method.applyMethod(WS.url(queryUrl));
 
-        Promise<WSResponse> promise = null;
-        switch (method) {
-            case GET:    promise = requestHolder.get(); break;
-            case POST:   return TODO;
-            case DELETE: return TODO;
-            case PUT:    return TODO;
-        }
+        Promise<JsonNode> nodePromise = promise.map(new Function<WSResponse, JsonNode>() {
 
-        JsonNode response = promise.map(WSResponse::asJson).get(TIMEOUT);
+            @Override
+            public JsonNode apply(WSResponse wsResponse) throws Throwable {
+                if (wsResponse.getStatus() != OK) {
+                    Map<String, String> ret = new LinkedHashMap<>();
+                    ret.put("status", String.valueOf(wsResponse.getStatus()));
+                    ret.put("statusText", wsResponse.getStatusText());
+                    ret.put("message", new String(wsResponse.asByteArray()));
+                    return Json.toJson(ret);
+                }
 
-        return ok(response);
+                return wsResponse.asJson();
+            }
+        });
+
+        return ok(nodePromise.get(TIMEOUT));
+    }
+
+    @Security.Authenticated(TokenAuthenticator.class)
+    public static Result profileGet() {
+        return profile(WSRequestHolder::get);
+    }
+
+    @Security.Authenticated(TokenAuthenticator.class)
+    public static Result profilePost() {
+        return profile(requestHolder -> requestHolder.post(request().body().asJson()));
+    }
+
+    @Security.Authenticated(TokenAuthenticator.class)
+    public static Result profileDelete() {
+        return profile(WSRequestHolder::delete);
+    }
+
+    @Security.Authenticated(TokenAuthenticator.class)
+    public static Result profilePut() {
+        return profilePost();
     }
 }

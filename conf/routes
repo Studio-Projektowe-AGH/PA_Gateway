@@ -6,7 +6,7 @@
 GET           /                               controllers.Application.index()
 GET           /authTest                       controllers.Application.indexTest()
 
-### Œcie¿ki:
+### ÅšcieÅ¼ki:
 
 #### Logowanie i rejestracja
 POST          /auth/signup                    controllers.AuthDispatcher.dispatchRequest(path: String ?= "auth/signup")
@@ -16,24 +16,24 @@ POST          /auth/signin/:provider          controllers.AuthDispatcher.dispatc
 ###### Testowe usugi
 GET           /test/token/random              controllers.AuthDispatcher.testToken()
 
-#### Dostêp do danych
-GET           /profile                        controllers.ProfileServiceConnector.profile(enums.Method.GET)
-POST          /profile                        controllers.ProfileServiceConnector.profile(enums.Method.POST)
-DELETE        /profile                        controllers.ProfileServiceConnector.profile(enums.Method.DELETE)
-PUT           /profile                        controllers.ProfileServiceConnector.profile(enums.Method.PUT)
+#### DostÄ™p do danych
+GET           /profile                        controllers.ProfileServiceConnector.profileGet()
+POST          /profile                        controllers.ProfileServiceConnector.profilePost()
+DELETE        /profile                        controllers.ProfileServiceConnector.profileDelete()
+PUT           /profile                        controllers.ProfileServiceConnector.profilePut()
 
 ###### Testowe usugi
 GET           /profiles/business/all          controllers.ProfileServiceConnector.getLocalList()
 
-#### Przestarza³e
+#### PrzestarzaÅ‚e
 ##### Klient biznesowy
-GET           /profiles/business              controllers.ProfileServiceConnector.profile(enums.Method.GET)
-POST          /profiles/business              controllers.ProfileServiceConnector.profile(enums.Method.POST)
-PUT           /profiles/business              controllers.ProfileServiceConnector.profile(enums.Method.DELETE)
-DELETE        /profiles/business              controllers.ProfileServiceConnector.profile(enums.Method.PUT)
+GET           /profiles/business              controllers.ProfileServiceConnector.profileGet()
+POST          /profiles/business              controllers.ProfileServiceConnector.profilePost()
+PUT           /profiles/business              controllers.ProfileServiceConnector.profileDelete()
+DELETE        /profiles/business              controllers.ProfileServiceConnector.profilePut()
 
 ##### Klient indywidualny
-GET           /profiles/indyvidual            controllers.ProfileServiceConnector.profile(enums.Method.GET)
+GET           /profiles/indyvidual            controllers.ProfileServiceConnector.profileGet()
 
 
 #### Nieistniejce?
