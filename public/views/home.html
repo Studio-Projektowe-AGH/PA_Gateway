@@ -56,11 +56,7 @@
                         <h4><i class="glyphicon glyphicon-user"></i></h4>
                         <p>
                             <li ng-repeat="x in user">
-                                Gatunki muzyczne: {{x.music_genres}}
-                                Nazwa: {{ x.name  }}
-                                Telefon: {{x.phone}}
-                                Logo: {{x.picture_url}}
-                                Strona internetowa: {{x.website}}
+                               {{'Gatunki muzyczne: ' + x.music_genres + 'Nazwa: ' + x.name + 'Telefon: ' + x.phone + 'Logo: ' + x.picture_url + 'Strona internetowa: '+ x.website}}
                             </li>
                         </p>
                     </div>
