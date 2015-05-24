@@ -21,7 +21,7 @@ public class Global extends GlobalSettings {
         public F.Promise<Result> call(Http.Context context) throws Throwable {
             F.Promise<Result> result = this.delegate.call(context);
             Http.Response response = context.response();
-            response.setHeader("Access-Control-Allow-Origin", "http://pa-user-simulator.herokuapp.com");
+            response.setHeader("Access-Control-Allow-Origin", "*");
             return result;
         }
     }
