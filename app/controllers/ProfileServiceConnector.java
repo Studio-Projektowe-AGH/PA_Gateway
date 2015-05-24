@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static play.mvc.Controller.request;
+import static play.mvc.Controller.response;
 import static play.mvc.Http.Status.OK;
 import static play.mvc.Results.internalServerError;
 import static play.mvc.Results.ok;
@@ -70,6 +71,7 @@ public class ProfileServiceConnector {
             return ok(Json.toJson(ids));
         }
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(wsResponse.asJson());
     }
 }
