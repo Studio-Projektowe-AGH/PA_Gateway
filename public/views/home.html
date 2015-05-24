@@ -55,13 +55,13 @@
                     <div class="tab-pane active well" id="profile">
                         <h4><i class="glyphicon glyphicon-user"></i></h4>
                         <p>
-                            <ul ng-repeat="x in user">
-                                <li> Gatunki muzyczne: {{x.music_genres}} </li>
-                                <li> Nazwa: {{ x.name  }} </li>
-                                <li> Telefon: {{x.phone}} </li>
-                                <li> Logo: {{x.picture_url}} </li>
-                                <li> Strona internetowa: {{x.website}} </li>
-                            </ul>
+                            <li ng-repeat="x in user">
+                                Gatunki muzyczne: {{x.music_genres}}
+                                Nazwa: {{ x.name  }}
+                                Telefon: {{x.phone}}
+                                Logo: {{x.picture_url}}
+                                Strona internetowa: {{x.website}}
+                            </li>
                         </p>
                     </div>
                     <div class="tab-pane well" id="messages">
