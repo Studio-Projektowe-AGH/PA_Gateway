@@ -10,10 +10,24 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 $scope.user = response.data;
                 console.log("UserService success");
                 console.log($scope.user);
+                $scope.location = response.data.location;
+                $scope.locationCoord = response.data.locationCoordinates;
 
                 for (member in $scope.user) {
                     if ($scope.user[member] == null) {
                         $scope.user[member]='Brak informacji';
+                    }
+                }
+
+                for (member in $scope.location) {
+                    if ($scope.location[member] == null) {
+                        $scope.location[member]='Brak informacji';
+                    }
+                }
+
+                for (member in $scope.locationCoord) {
+                    if ($scope.locationCoord[member] == null) {
+                        $scope.locationCoord[member]='Brak informacji';
                     }
                 }
 
