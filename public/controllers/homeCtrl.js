@@ -13,6 +13,9 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 console.log("nazwa");
                 console.log($scope.user.name);
 
+                var data=$scope.user;
+                sessionStorage["user"] = JSON.stringify(data);
+
                 //var data=$scope.user;
                 //
                 //$.each(data, function(key, val) {
