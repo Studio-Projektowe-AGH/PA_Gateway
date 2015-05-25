@@ -13,13 +13,13 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 console.log("nazwa");
                 console.log($scope.user.name);
 
-                var data=$scope.user;
-
-                $.each(data, function(key, val) {
-                    $('<tr><td>ID: '+key+'</td><td id="'+key+'">'+val+'</td><tr>').appendTo('#display');
-                });
-
-                alert(JSON.stringify(data));
+                //var data=$scope.user;
+                //
+                //$.each(data, function(key, val) {
+                //    $('<tr><td>ID: '+key+'</td><td id="'+key+'">'+val+'</td><tr>').appendTo('#display');
+                //});
+                //
+                //alert(JSON.stringify(data));
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]
