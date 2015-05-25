@@ -10,11 +10,11 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 $scope.user = response;
                 console.log("UserService success");
                 console.log($scope.user);
-                console.log("nazwa");
-                console.log($scope.user.name);
-
-                var data=$scope.user;
-                sessionStorage["user"] = JSON.stringify(data);
+                //console.log("nazwa");
+                //console.log($scope.user.name);
+                //
+                //var data=$scope.user;
+                //sessionStorage["user"] = JSON.stringify(data);
 
                 //var data=$scope.user;
                 //

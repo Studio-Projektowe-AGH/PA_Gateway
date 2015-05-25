@@ -56,12 +56,12 @@
                         <h4><i class="glyphicon glyphicon-user"></i></h4>
                         <p>
                             <ul>
-                                <li ng-repeat="x in user">
-                                    {{ 'Gatunki muzyczne: '+ x.music_genres +'Nazwa: ' + x.name + 'Telefon: ' + x.phone + 'Logo: ' + x.picture_url + 'Strona internetowa: '+ x.website}}
+                                <li>
+                                    {{ 'Gatunki muzyczne: '+ user.music_genres}}</li>
+                                  <li>  {{+'Nazwa: ' + x.name + 'Telefon: ' + x.phone + 'Logo: ' + x.picture_url + 'Strona internetowa: '+ x.website}}
                                 </li>
                             </ul>
-                        TEST
-                        <br>{{data.name}}
+
                         </p>
                     </div>
                     <div class="tab-pane well" id="messages">
