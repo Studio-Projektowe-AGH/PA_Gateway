@@ -91,6 +91,6 @@ public class ProfileServiceConnector {
 
     @Security.Authenticated(TokenAuthenticator.class)
     public static Result profilePut() {
-        return profilePost();
+        return profile(requestHolder -> requestHolder.put(request().body().asJson()));
     }
 }
