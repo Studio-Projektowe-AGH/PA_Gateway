@@ -10,6 +10,13 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 $scope.user = response.data;
                 console.log("UserService success");
                 console.log($scope.user);
+
+                for (member in user) {
+                    if (user[member] == null) {
+                        user[member]='Brak informacji';
+                    }
+                }
+
                 //console.log("nazwa");
                 //console.log($scope.user.name);
                 //
