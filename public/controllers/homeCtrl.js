@@ -7,7 +7,7 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
         (function () {
             UserService.GetBusinessProfile(function (response) {
                 console.log("UserService.GetBussinessProfile entry!");
-                $scope.user = response;
+                $scope.user = response.data;
                 console.log("UserService success");
                 console.log($scope.user);
                 //console.log("nazwa");
