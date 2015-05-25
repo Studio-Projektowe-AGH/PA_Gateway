@@ -11,9 +11,9 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 console.log("UserService success");
                 console.log($scope.user);
 
-                for (member in user) {
-                    if (user[member] == null) {
-                        user[member]='Brak informacji';
+                for (member in $scope.user) {
+                    if ($scope.user[member] == null) {
+                        $scope.user[member]='Brak informacji';
                     }
                 }
 
