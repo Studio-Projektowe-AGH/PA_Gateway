@@ -12,7 +12,12 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 console.log($scope.user);
                 console.log("nazwa");
                 console.log($scope.user.name);
-                
+
+                var data=user;
+
+                $.each(data, function(key, val) {
+                    $('<tr><td>ID: '+key+'</td><td id="'+key+'">'+val+'</td><tr>').appendTo('#display');
+                });
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]
