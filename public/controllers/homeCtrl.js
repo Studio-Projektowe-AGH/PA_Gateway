@@ -7,13 +7,43 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
         (function () {
             UserService.GetBusinessProfile(function (response) {
                 console.log("UserService.GetBussinessProfile entry!");
-                $scope.user = response;
+                $scope.user = response.data;
                 console.log("UserService success");
                 console.log($scope.user);
+                $scope.location = response.data.location;
+                $scope.locationCoord = response.data.locationCoordinates;
 
-                $scope.temp = angular.fromJson($scope.user.name);
-                console.log("nazwa");
-                console.log($scope.temp);
+                for (member in $scope.user) {
+                    if ($scope.user[member] == null) {
+                        $scope.user[member]='Brak informacji';
+                    }
+                }
+
+                for (member in $scope.location) {
+                    if ($scope.location[member] == null) {
+                        $scope.location[member]='Brak informacji';
+                    }
+                }
+
+                for (member in $scope.locationCoord) {
+                    if ($scope.locationCoord[member] == null) {
+                        $scope.locationCoord[member]='Brak informacji';
+                    }
+                }
+
+                //console.log("nazwa");
+                //console.log($scope.user.name);
+                //
+                //var data=$scope.user;
+                //sessionStorage["user"] = JSON.stringify(data);
+
+                //var data=$scope.user;
+                //
+                //$.each(data, function(key, val) {
+                //    $('<tr><td>ID: '+key+'</td><td id="'+key+'">'+val+'</td><tr>').appendTo('#display');
+                //});
+                //
+                //alert(JSON.stringify(data));
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]
