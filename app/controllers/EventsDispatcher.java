@@ -12,14 +12,6 @@ public class EventsDispatcher extends Controller {
     private static final String EVENTS_URL = "http://goparty-eventq.herokuapp.com/";
 
     public static Result dispatch(String action) {
-        WSResponse wsResponse = JsonDispatcher.dispatchPostRequest(EVENTS_URL + "events/" + action);
-//        return ok("asd");
-
-        if (wsResponse.getStatus() != OK) {
-            return ok(wsResponse.getStatus() + " received, but it is ok (" + new String(wsResponse.asByteArray()) + ")");
-        }
-
-
-        return ok(new String(wsResponse.asByteArray()));
+        return JsonDispatcher.dispatchPostRequest(EVENTS_URL + "events/" + action);
     }
 }

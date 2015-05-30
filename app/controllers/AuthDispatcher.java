@@ -13,13 +13,14 @@ public class AuthDispatcher extends Controller {
     private static final String AUTH_URL = "http://goparty-auth.herokuapp.com/";
 
     public static Result dispatchRequest(String path) {
-        WSResponse wsResponse = JsonDispatcher.dispatchPostRequest(AUTH_URL + path);
-
-        if (wsResponse.getStatus() == OK) {
-            return ok(wsResponse.asJson());
-        }
-
-        return internalServerError(new String(wsResponse.asByteArray()));
+        return JsonDispatcher.dispatchPostRequest(AUTH_URL + path);
+//        WSResponse wsResponse = JsonDispatcher.dispatchPostRequest(AUTH_URL + path);
+//
+//        if (wsResponse.getStatus() == OK) {
+//            return ok(wsResponse.asJson());
+//        }
+//
+//        return internalServerError(new String(wsResponse.asByteArray()));
     }
 
     public static Result dispatchSocialRequest(String provider) {
