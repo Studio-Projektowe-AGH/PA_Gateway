@@ -6,9 +6,10 @@ import play.mvc.Result;
 
 /**
  * Created by Marek on 2015-05-21.
+ * Dispatching to events service logic
  */
 public class EventsDispatcher extends Controller {
-    private static final String EVENTS_URL = "http://test-pa.herokuapp.com/";
+    private static final String EVENTS_URL = "http://goparty-eventq.herokuapp.com/";
 
     public static Result dispatch(String action) {
         WSResponse wsResponse = JsonDispatcher.dispatchPostRequest(EVENTS_URL + "events/" + action);
