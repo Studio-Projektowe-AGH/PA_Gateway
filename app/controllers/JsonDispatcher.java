@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.ws.WS;
 import play.libs.ws.WSResponse;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 /**
@@ -14,22 +15,15 @@ public class JsonDispatcher extends Controller {
 
     public static WSResponse dispatchPostRequest(String path) {
         JsonNode jsonNode = request().body().asJson();
-//        return null;
 
-        WSResponse wsResponse = WS.url(path)
-                .post(jsonNode)
-                .get(TIMEOUT);
-
-        return wsResponse;
+        return WS.url(path)
+                 .post(jsonNode)
+                 .get(TIMEOUT);
     }
 
     public static WSResponse dispatchGetRequest(String path) {
-        JsonNode jsonNode = request().body().asJson();
-
-        WSResponse wsResponse = WS.url(path)
+        return WS.url(path)
                 .get()
                 .get(TIMEOUT);
-
-        return wsResponse;
     }
 }

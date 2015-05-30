@@ -44,7 +44,11 @@ public class ProfileServiceConnector {
         JsonNode user = Json.parse(request().username());
 
         String queryUrl = serviceUrl + user.get("userRole").asText() + "/" + user.get("userId").asText();
-        return redirect(queryUrl);
+
+        WSResponse wsResponse = JsonDispatcher.dispatchGetRequest(queryUrl);
+
+        wsResponse.getAllHeaders().forEach((key, values) -> values.forEach(value -> response().setHeader(key, value)));
+        return ok(new String(wsResponse.asByteArray()));
     }
 
 }
