@@ -2,7 +2,7 @@
  * Created by Dominika on 2015-04-17.
  */
 
-angular.module('HomeModule', ['UserModule', 'AuthenticationModule', 'initialValue'])
+angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
     .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'AuthenticationService', function ($scope, $rootScope, $location, UserService, AuthenticationService) {
         (function () {
             UserService.GetBusinessProfile(function (response) {
