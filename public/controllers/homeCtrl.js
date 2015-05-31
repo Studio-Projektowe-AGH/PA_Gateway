@@ -66,7 +66,7 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
 
 
         $scope.submitEditProfile = function () {
-            UserService.UpdateBusinessProfile(user_edit, function(response) {
+            UserService.UpdateBusinessProfile($scope.user_edit, function(response) {
                 console.log("UpdateBusinessProfile - success");
             },
             function(response) {
