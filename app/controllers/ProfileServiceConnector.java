@@ -66,6 +66,7 @@ public class ProfileServiceConnector {
                     Map<String, String> ret = new LinkedHashMap<>();
                     ret.put("status", String.valueOf(wsResponse.getStatus()));
                     ret.put("statusText", wsResponse.getStatusText());
+                    ret.put("request", queryUrl);
                     ret.put("message", new String(wsResponse.asByteArray()));
 
                     response().setHeader(CONTENT_TYPE, "application/json");
