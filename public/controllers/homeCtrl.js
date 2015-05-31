@@ -3,7 +3,7 @@
  */
 
 angular.module('HomeModule', ['UserModule', 'AuthenticationModule', 'initialValue'])
-    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'AuthenticationService','initialValue', function ($scope, $rootScope, $location, UserService, AuthenticationService) {
+    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'AuthenticationService', function ($scope, $rootScope, $location, UserService, AuthenticationService) {
         (function () {
             UserService.GetBusinessProfile(function (response) {
                 console.log("UserService.GetBussinessProfile entry!");
