@@ -75,18 +75,18 @@
                         <p>
                             <!--<div ng-controller="ExampleController">-->
                         <form novalidate class="form form-vertical" name="editProfile" role="form">
-                            Nazwa: <input type="text" class="form-control" ng-model="user_edit.name" value={{user.name}} /><br />
-                            Telefon: <input type="text" class="form-control" ng-model="user_edit.phone" value={{user.phone}} /><br />
-                            Logo: <input type="text" class="form-control" ng-model="user_edit.picture_url" value={{user.picture_url}} /><br />
-                            Strona internetowa: <input type="text" class="form-control" ng-model="user_edit.website" value={{user.website}} /><br />
-                            O klubie: <input type="text" class="form-control" ng-model="user_edit.about" value={{user.about}}/><br />
-                            Kategoria: <input type="text" class="form-control" ng-model="user_edit.category_list" value={{user.category_list}} /><br />
-                            Gatunki muzyczne: <input type="text" class="form-control" ng-model="user_edit.music_genres" value={{ user.music_genres }} /><br />
-                            Ulica: <input type="text" class="form-control" ng-model="user_edit.street" value={{ location.street }} /><br />
-                            Miasto: <input type="text" class="form-control" ng-model="user_edit.city" value={{ location.city }} /><br />
-                            Państwo: <input type="text" class="form-control" ng-model="user_edit.country" value={{user.location.country }} /><br />
-                            Lokalizacja (współrzędna X): <input type="text" class="form-control" ng-model="user_edit.xCoordinate" value={{locationCoord.xCoordinate }} /><br />
-                            Lokalizacja (współrzędna Y): <input type="text" class="form-control" ng-model="user_edit.yCoordinate" value={{locationCoord.yCoordinate }} /><br />
+                            Nazwa: <input initial-value type="text" class="form-control" ng-model="user_edit.name" value={{user.name}} /><br />
+                            Telefon: <input initial-value type="text" class="form-control" ng-model="user_edit.phone" value={{user.phone}} /><br />
+                            Logo: <input initial-value type="text" class="form-control" ng-model="user_edit.picture_url" value={{user.picture_url}} /><br />
+                            Strona internetowa: <input initial-value type="text" class="form-control" ng-model="user_edit.website" value={{user.website}} /><br />
+                            O klubie: <input initial-value type="text" class="form-control" ng-model="user_edit.about" value={{user.about}}/><br />
+                            Kategoria: <input initial-value type="text" class="form-control" ng-model="user_edit.category_list" value={{user.category_list}} /><br />
+                            Gatunki muzyczne: <input initial-value type="text" class="form-control" ng-model="user_edit.music_genres" value={{ user.music_genres }} /><br />
+                            Ulica: <input initial-value type="text" class="form-control" ng-model="user_edit.street" value={{ location.street }} /><br />
+                            Miasto: <input initial-value type="text" class="form-control" ng-model="user_edit.city" value={{ location.city }} /><br />
+                            Państwo: <input initial-value type="text" class="form-control" ng-model="user_edit.country" value={{user.location.country }} /><br />
+                            Lokalizacja (współrzędna X): <input initial-value type="text" class="form-control" ng-model="user_edit.xCoordinate" value={{locationCoord.xCoordinate }} /><br />
+                            Lokalizacja (współrzędna Y): <input initial-value type="text" class="form-control" ng-model="user_edit.yCoordinate" value={{locationCoord.yCoordinate }} /><br />
                             <input class="btn btn-primary" type="submit" ng-click="submitEditProfile(user_edit)" value="Save" />
                         </form>
                         </p>
