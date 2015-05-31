@@ -23,6 +23,7 @@ public class EventsDispatcher extends Controller {
     public static Result options(String action) {
         Set<String> headersSet = new HashSet<>(request().headers().keySet());
         headersSet.add("Authorization");
+        headersSet.add("Content-Type");
         Optional<String> headers = headersSet.parallelStream().reduce((s, s2) -> s.concat(", " + s2));
         response().setHeader("Access-Control-Allow-Methods", "POST");
         response().setHeader("Access-Control-Allow-Headers", headers.get());
