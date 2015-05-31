@@ -32,6 +32,8 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 }
 
 
+                $scope.user_edit = angular.copy($scope.user);
+
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]

@@ -1,5 +1,5 @@
 angular.module('myApp',
-    ['ngRoute', 'ngCookies', 'facebook', 'AuthenticationModule', 'UserModule', 'RegisterModule', 'HomeModule', 'LoginModule', 'initialValue'])
+    ['ngRoute', 'ngCookies', 'facebook', 'AuthenticationModule', 'UserModule', 'RegisterModule', 'HomeModule', 'LoginModule'])
     .config(['FacebookProvider', function(FacebookProvider){
         FacebookProvider.init('504846879664518');
     }])
