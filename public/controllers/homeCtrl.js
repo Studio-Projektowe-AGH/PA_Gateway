@@ -67,23 +67,22 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
             UserService.UpdateBusinessProfile(user_edit, handleSuccess, handleError)
             {
                 console.log('w submitEditProfile');
-                //$params = $.param({
-                //
-                //    //{"_id":{"$oid":"5554f84952423afe1e6ebdcf"},
-                //    "name": user_edit.name,
-                //    "category_list": user_edit.category_list,
-                //    "about": user_edit.about,
-                //    "city": user_edit.city,
-                //    "country": user_edit.country,
-                //    "street": user_edit.street,
-                //    "xCoordinate": user_edit.xCoordinate,
-                //    "yCoordinate": user_edit.yCoordinate,
-                //    "website": user_edit.website,
-                //    "music_genres": user_edit.music_genres,
-                //    "phone": user_edit.phone,
-                //    "picture_url": user_edit.picture_url
-                //})
-            }
+                //        $params = $.                //param({
 
+                //            //{"_id":{"$oid":"5554f84952423afe1e6ebdcf"},
+                //            "name": user_edit.name,
+                //            "category_list": user_edit.category_list,
+                //            "about": user_edit.about,
+                //            "city": user_edit.city,
+                //            "country": user_edit.country,
+                //            "street": user_edit.street,
+                //            "xCoordinate": user_edit.xCoordinate,
+                //            "yCoordinate": user_edit.yCoordinate,
+                //            "website": user_edit.website,
+                //            "music_genres": user_edit.music_genres,
+                //            "phone": user_edit.phone,
+                //            "picture_url": user_edit.picture_url
+                //
+            }
         }
-    }
+    }]);
