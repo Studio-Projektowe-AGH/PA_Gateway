@@ -75,7 +75,7 @@
                         <p>
                             <!--<div ng-controller="ExampleController">-->
                         <form novalidate class="form form-vertical" name="editProfile" role="form">
-                            Nazwa: <input initial-value type="text" class="form-control" ng-model="user_edit.name" value={{user.name}} /><br />
+                            Nazwa: <input type="text" class="form-control" ng-model="user_edit.name" ng-init="user_edit.name={{user.name}}" /><br />
                             Telefon: <input initial-value type="text" class="form-control" ng-model="user_edit.phone" value={{user.phone}} /><br />
                             Logo: <input initial-value type="text" class="form-control" ng-model="user_edit.picture_url" value={{user.picture_url}} /><br />
                             Strona internetowa: <input initial-value type="text" class="form-control" ng-model="user_edit.website" value={{user.website}} /><br />
