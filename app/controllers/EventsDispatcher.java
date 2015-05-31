@@ -4,6 +4,7 @@ import play.libs.ws.WSResponse;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
@@ -20,7 +21,7 @@ public class EventsDispatcher extends Controller {
     }
 
     public static Result options(String action) {
-        Set<String> headersSet = request().headers().keySet();
+        Set<String> headersSet = new HashSet<>(request().headers().keySet());
         headersSet.add("Authorization");
         Optional<String> headers = headersSet.parallelStream().reduce((s, s2) -> s.concat(", " + s2));
         response().setHeader("Access-Control-Allow-Methods", "POST");
