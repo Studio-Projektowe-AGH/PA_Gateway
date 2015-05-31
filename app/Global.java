@@ -22,7 +22,6 @@ public class Global extends GlobalSettings {
             F.Promise<Result> result = this.delegate.call(context);
             Http.Response response = context.response();
             response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
             return result;
         }
     }

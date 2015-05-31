@@ -16,10 +16,7 @@ public class EventsDispatcher extends Controller {
     }
 
     public static Result options(String action) {
-        response().setHeader("Access-Control-Allow-Origin", "*");
         response().setHeader("Access-Control-Allow-Methods", "POST");
-        response().setHeader("Access-Control-Allow-Headers", "*");
-        response().setHeader("Access-Control-Allow-Credentials", "true");
         return ok();
     }
 }
