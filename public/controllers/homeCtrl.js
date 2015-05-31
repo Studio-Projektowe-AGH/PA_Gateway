@@ -64,8 +64,9 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
 
 
         $scope.submitEditProfile = function (user_edit) {
-            UserService.UpdateBusinessProfile(user_edit, handleSuccess, handleError) {
-                console.log('w submitEditProfile')
+            UserService.UpdateBusinessProfile(user_edit, handleSuccess, handleError)
+            {
+                console.log('w submitEditProfile');
                 //$params = $.param({
                 //
                 //    //{"_id":{"$oid":"5554f84952423afe1e6ebdcf"},
