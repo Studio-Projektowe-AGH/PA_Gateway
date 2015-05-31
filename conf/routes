@@ -3,45 +3,46 @@
 # ~~~~
 
 # Home page
-GET           /                               controllers.Application.index()
-GET           /authTest                       controllers.Application.indexTest()
+GET            /                               controllers.Application.index()
+GET            /authTest                       controllers.Application.indexTest()
 
 ### Ścieżki:
 
 #### Logowanie i rejestracja
-POST          /auth/signup                    controllers.AuthDispatcher.dispatchRequest(path: String ?= "auth/signup")
-POST          /auth/signin/credentials        controllers.AuthDispatcher.dispatchRequest(path: String ?= "auth/signin/credentials")
-POST          /auth/signin/:provider          controllers.AuthDispatcher.dispatchSocialRequest(provider)
+POST           /auth/signup                    controllers.AuthDispatcher.dispatchRequest(path: String ?= "auth/signup")
+POST           /auth/signin/credentials        controllers.AuthDispatcher.dispatchRequest(path: String ?= "auth/signin/credentials")
+POST           /auth/signin/:provider          controllers.AuthDispatcher.dispatchSocialRequest(provider)
 
 ###### Testowe usugi
-GET           /test/token/random              controllers.AuthDispatcher.testToken()
+GET            /test/token/random              controllers.AuthDispatcher.testToken()
 
 #### Dostęp do danych
-GET           /profile                        controllers.ProfileServiceConnector.profileGet()
-POST          /profile                        controllers.ProfileServiceConnector.profilePost()
-DELETE        /profile                        controllers.ProfileServiceConnector.profileDelete()
-PUT           /profile                        controllers.ProfileServiceConnector.profilePut()
+GET            /profile                        controllers.ProfileServiceConnector.profileGet()
+POST           /profile                        controllers.ProfileServiceConnector.profilePost()
+DELETE         /profile                        controllers.ProfileServiceConnector.profileDelete()
+PUT            /profile                        controllers.ProfileServiceConnector.profilePut()
 
 ###### Testowe usugi
-GET           /profiles/business/all          controllers.ProfileServiceConnector.getLocalList()
+GET            /profiles/business/all          controllers.ProfileServiceConnector.getLocalList()
 
 #### Przestarzałe
 ##### Klient biznesowy
-GET           /profiles/business              controllers.ProfileServiceConnector.profileGet()
-POST          /profiles/business              controllers.ProfileServiceConnector.profilePost()
-PUT           /profiles/business              controllers.ProfileServiceConnector.profileDelete()
-DELETE        /profiles/business              controllers.ProfileServiceConnector.profilePut()
+GET            /profiles/business              controllers.ProfileServiceConnector.profileGet()
+POST           /profiles/business              controllers.ProfileServiceConnector.profilePost()
+PUT            /profiles/business              controllers.ProfileServiceConnector.profileDelete()
+DELETE         /profiles/business              controllers.ProfileServiceConnector.profilePut()
 
 ##### Klient indywidualny
-GET           /profiles/indyvidual            controllers.ProfileServiceConnector.profileGet()
+GET            /profiles/indyvidual            controllers.ProfileServiceConnector.profileGet()
 
 
 #### Nieistniejce?
-POST          /events/:action                 controllers.EventsDispatcher.dispatch(action)
+POST           /events/:action                 controllers.EventsDispatcher.dispatch(action)
+OPTIONS        /events/:action                 controllers.EventsDispatcher.dispatch(action)
 
 # Map the JS resource paths
-GET           /*file                          controllers.Assets.versioned(path="/public", file: Asset)
+GET            /*file                          controllers.Assets.versioned(path="/public", file: Asset)
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET           /assets/*file                   controllers.Assets.at(path="/public", file)
+GET            /assets/*file                   controllers.Assets.at(path="/public", file)
