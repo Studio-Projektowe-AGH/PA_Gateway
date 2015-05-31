@@ -13,6 +13,9 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 $scope.location = response.data.location;
                 $scope.locationCoord = response.data.locationCoordinates;
 
+                $scope.user_edit = angular.copy($scope.user);
+                delete $scope.user_edit['_id'];
+
                 for (member in $scope.user) {
                     if ($scope.user[member] == null) {
                         $scope.user[member] = 'Brak informacji';
@@ -32,7 +35,6 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 }
 
 
-                $scope.user_edit = angular.copy($scope.user);
 
                 //{
                 //    "name":"Nazwa Klubu,
