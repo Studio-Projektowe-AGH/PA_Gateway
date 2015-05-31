@@ -74,7 +74,7 @@
                         <h3>Edytuj dane</h3>
                         <p>
                             <!--<div ng-controller="ExampleController">-->
-                        <form novalidate class="form form-vertical" name="editProfile" role="form">
+                        <form novalidate class="form form-vertical" name="editProfile" role="form" ng-submit="submitEditProfile()">
                             Nazwa: <input type="text" class="form-control" ng-model="user_edit.name"  /><br />
                             Telefon: <input  type="text" class="form-control" ng-model="user_edit.phone" /><br />
                             Logo: <input type="text" class="form-control" ng-model="user_edit.picture_url" /><br />
@@ -82,12 +82,12 @@
                             O klubie: <input type="text" class="form-control" ng-model="user_edit.about" /><br />
                             Kategoria: <input type="text" class="form-control" ng-model="user_edit.category_list"  /><br />
                             Gatunki muzyczne: <input  type="text" class="form-control" ng-model="user_edit.music_genres"  /><br />
-                            Ulica: <input  type="text" class="form-control" ng-model="user_edit.street"  /><br />
-                            Miasto: <input  type="text" class="form-control" ng-model="user_edit.city"  /><br />
-                            Państwo: <input  type="text" class="form-control" ng-model="user_edit.country" } /><br />
-                            Lokalizacja (współrzędna X): <input  type="text" class="form-control" ng-model="user_edit.xCoordinate"  /><br />
-                            Lokalizacja (współrzędna Y): <input  type="text" class="form-control" ng-model="user_edit.yCoordinate"  /><br />
-                            <input class="btn btn-primary" type="submit" ng-click="submitEditProfile(user_edit)" value="Save" />
+                            Ulica: <input  type="text" class="form-control" ng-model="user_edit.location.street"  /><br />
+                            Miasto: <input  type="text" class="form-control" ng-model="user_edit.location.city"  /><br />
+                            Państwo: <input  type="text" class="form-control" ng-model="user_edit.location.country" } /><br />
+                            Lokalizacja (współrzędna X): <input  type="text" class="form-control" ng-model="user_edit.locationCoordinates.xCoordinate"  /><br />
+                            Lokalizacja (współrzędna Y): <input  type="text" class="form-control" ng-model="user_edit.locationCoordinates.yCoordinate"  /><br />
+                            <input class="btn btn-primary" type="submit" value="Save" />
                         </form>
                         </p>
                     </div>

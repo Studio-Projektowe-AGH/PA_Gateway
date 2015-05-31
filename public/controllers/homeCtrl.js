@@ -65,26 +65,13 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
         };
 
 
-        $scope.submitEditProfile = function (user_edit) {
-            UserService.UpdateBusinessProfile(user_edit, handleSuccess, handleError)
-            {
-                console.log('w submitEditProfile');
-                //        $params = $.                //param({
+        $scope.submitEditProfile = function () {
+            UserService.UpdateBusinessProfile(user_edit, function(response) {
+                console.log("UpdateBusinessProfile - success");
+            },
+            function(response) {
+                console.log("UpdateBusinessProfile - failed");
+            });
 
-                //            //{"_id":{"$oid":"5554f84952423afe1e6ebdcf"},
-                //            "name": user_edit.name,
-                //            "category_list": user_edit.category_list,
-                //            "about": user_edit.about,
-                //            "city": user_edit.city,
-                //            "country": user_edit.country,
-                //            "street": user_edit.street,
-                //            "xCoordinate": user_edit.xCoordinate,
-                //            "yCoordinate": user_edit.yCoordinate,
-                //            "website": user_edit.website,
-                //            "music_genres": user_edit.music_genres,
-                //            "phone": user_edit.phone,
-                //            "picture_url": user_edit.picture_url
-                //
-            }
         }
     }]);
