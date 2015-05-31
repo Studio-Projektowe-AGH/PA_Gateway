@@ -48,7 +48,7 @@
             <div class="panel">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-                    <li><a href="#/messages" data-toggle="tab">Messages</a></li>
+                    <li class="active"><a href="#editProfile" data-toggle="tab">Edit Profile</a></li>
                     <li><a href="#/settings" data-toggle="tab">Settings</a></li>
                 </ul>
                 <div class="tab-content">
@@ -69,9 +69,27 @@
                             <li><label>Lokalizacja (współrzędna Y): </label>{{ locationCoord.yCoordinate }} </li>
                         </p>
                     </div>
-                    <div class="tab-pane well" id="messages">
-                        <h4><i class="glyphicon glyphicon-comment"></i></h4> Message ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                        <p>Quisque mauris augu.</p>
+                    <div class="tab-pane active well" id="editProfile">
+                        <h4><i class="glyphicon glyphicon-comment"></i></h4>
+                        <p>
+                        <!--<div ng-controller="ExampleController">-->
+                        <form novalidate class="simple-form" name="editProfile" role="form">
+                            Nazwa: <input type="text" ng-model="user_edit.name" value={{user.name}}/><br />
+                            Telefon: <input type="text" ng-model="user_edit.phone" value={{user.phone}}/><br />
+                            Logo: <input type="text" ng-model="user_edit.picture_url" value={{user.picture_url}} /><br />
+                            Strona internetowa: <input type="text" ng-model="user_edit.website" value={{user.website}} /><br />
+                            O klubie: <input type="text" ng-model="user_edit.about" value={{user.about}}/><br />
+                            Kategoria: <input type="text" ng-model="user_edit.category_list" value={{user.category_list}} /><br />
+                            Gatunki muzyczne: <input type="text" ng-model="user_edit.music_genres" value={{ user.music_genres }} /><br />
+                            Ulica: <input type="text" ng-model="user_edit.street" value={{ location.street }} /><br />
+                            Miasto: <input type="text" ng-model="user_edit.city" value={{ location.city }} /><br />
+                            Państwo: <input type="text" ng-model="user_edit.country" value={{user.location.country }} /><br />
+                            Lokalizacja (współrzędna X): <input type="text" ng-model="user_edit.xCoordinate" value={{locationCoord.xCoordinate }} /><br />
+                            Lokalizacja (współrzędna Y): <input type="text" ng-model="user_edit.yCoordinate" value={{locationCoord.yCoordinate }} /><br />
+                            <input type="submit" ng-click="submitEditProfile(user_edit)" value="Save" />
+                        </form>
+                       <!-- <pre>form = {{user_edit | json}}</pre>-->
+                    </div></p>
                     </div>
                     <div class="tab-pane well" id="settings">
                         <h4><i class="glyphicon glyphicon-cog"></i></h4> Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.

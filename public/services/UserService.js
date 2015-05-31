@@ -12,6 +12,7 @@ angular.module('UserModule', [])
         service.GetById = GetById;
         service.GetByUsername = GetByUsername;
         service.GetBusinessProfile = GetBusinessProfile;
+        service.UpdateBusinessProfile = UpdateBusinessProfile;
         service.Create = Create;
         service.Update = Update;
         service.Delete = Delete;
@@ -104,6 +105,19 @@ angular.module('UserModule', [])
             alert("usalo sie!");
             return dataFromServer;
         }
+
+        function UpdateBusinessProfile(user_edit, handleSuccess, handleError) {
+                var config = {
+                    method: 'PUT',
+                    url: "/profile",
+                    data: angular.toJson(user_edit),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept' : 'application/json'
+                    }
+                };
+                return $http(config).then(handleSuccess, handleError);
+            }
 
         function handleError(dataFromServer, status, headers, config) {
             //alert("blad!!! " + status);

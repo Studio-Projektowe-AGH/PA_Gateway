@@ -3,7 +3,7 @@
  */
 
 angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
-.controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'AuthenticationService', function ($scope, $rootScope, $location, UserService, AuthenticationService) {
+    .controller('HomeCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'AuthenticationService', function ($scope, $rootScope, $location, UserService, AuthenticationService) {
         (function () {
             UserService.GetBusinessProfile(function (response) {
                 console.log("UserService.GetBussinessProfile entry!");
@@ -15,35 +15,23 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
 
                 for (member in $scope.user) {
                     if ($scope.user[member] == null) {
-                        $scope.user[member]='Brak informacji';
+                        $scope.user[member] = 'Brak informacji';
                     }
                 }
 
                 for (member in $scope.location) {
                     if ($scope.location[member] == null) {
-                        $scope.location[member]='Brak informacji';
+                        $scope.location[member] = 'Brak informacji';
                     }
                 }
 
                 for (member in $scope.locationCoord) {
                     if ($scope.locationCoord[member] == null) {
-                        $scope.locationCoord[member]='Brak informacji';
+                        $scope.locationCoord[member] = 'Brak informacji';
                     }
                 }
 
-                //console.log("nazwa");
-                //console.log($scope.user.name);
-                //
-                //var data=$scope.user;
-                //sessionStorage["user"] = JSON.stringify(data);
 
-                //var data=$scope.user;
-                //
-                //$.each(data, function(key, val) {
-                //    $('<tr><td>ID: '+key+'</td><td id="'+key+'">'+val+'</td><tr>').appendTo('#display');
-                //});
-                //
-                //alert(JSON.stringify(data));
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]
@@ -62,19 +50,39 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                 //    "picture_url": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xft1/v/t1.0-1/1233526_633294910023878_2040166084_n.jpg?oh=0c3d11862d47141d0144b68198cb43fa&oe=560AA6AC&__gda__=1439348545_1539583d82c3721f2126306e173bcaef"
                 //}
 
-                //$http.get('../profileData.json').success(function (data){
-                //    $scope.employees = data;
-                //    console.log("success FUNCKJA!");
-                //    //$scope.message = 'Hello World!';
-                //});
+
             });
         })();
         $scope.email = $rootScope.globals.currentUser.email;
         $scope.logout = function () {
             AuthenticationService.ClearCredentials();
-            UserService.SignOut($scope.user.email, function(response){
+            UserService.SignOut($scope.user.email, function (response) {
                 AuthenticationService.ClearCredentials();
                 $location.path('/login');
             });
         };
-    }]);
+
+
+        $scope.submitEditProfile = function (user_edit) {
+            UserService.UpdateBusinessProfile(user_edit, handleSuccess, handleError) {
+                console.log('w submitEditProfile')
+                //$params = $.param({
+                //
+                //    //{"_id":{"$oid":"5554f84952423afe1e6ebdcf"},
+                //    "name": user_edit.name,
+                //    "category_list": user_edit.category_list,
+                //    "about": user_edit.about,
+                //    "city": user_edit.city,
+                //    "country": user_edit.country,
+                //    "street": user_edit.street,
+                //    "xCoordinate": user_edit.xCoordinate,
+                //    "yCoordinate": user_edit.yCoordinate,
+                //    "website": user_edit.website,
+                //    "music_genres": user_edit.music_genres,
+                //    "phone": user_edit.phone,
+                //    "picture_url": user_edit.picture_url
+                //})
+            }
+
+        }
+    }
