@@ -38,7 +38,7 @@ GET            /profiles/indyvidual            controllers.ProfileServiceConnect
 
 #### Nieistniejce?
 POST           /events/:action                 controllers.EventsDispatcher.dispatch(action)
-OPTIONS        /events/:action                 controllers.EventsDispatcher.dispatch(action)
+OPTIONS        /events/:action                 controllers.EventsDispatcher.options(action)
 
 # Map the JS resource paths
 GET            /*file                          controllers.Assets.versioned(path="/public", file: Asset)
