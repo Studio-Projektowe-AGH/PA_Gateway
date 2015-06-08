@@ -31,7 +31,7 @@ public class ProfileServiceConnectorTest {
 
             assertEquals("When correct token in get request: "+ contentAsString(result),
                     200, status(result));
-            assertEquals("{\"_id\":{\"$oid\":\"554fc859e4b0db1ae750b43f\"},\"name\":\"kawiarnia\",\"category_list\":null,\"about\":null,\"location\":{\"city\":null,\"country\":null,\"street\":null},\"locationCoordinates\":{\"xCoordinate\":null,\"yCoordinate\":null},\"website\":null,\"music_genres\":null,\"phone\":null,\"picture_url\":null}", contentAsString(result));
+            assertEquals("{\"_id\":{\"$oid\":\"554fc859e4b0db1ae750b43f\"},\"name\":\"kawiarnia\",\"category_list\":[\"a\"],\"about\":\"test\",\"location\":{\"city\":\"a\",\"country\":\"a\",\"street\":\"a\"},\"locationCoordinates\":{\"xCoordinate\":23.3,\"yCoordinate\":22.3},\"website\":\"a\",\"music_genres\":[\"a\"],\"phone\":\"a\",\"picture_url\":\"a\"}", contentAsString(result));
             System.out.println(contentAsString(result));
 
         });
