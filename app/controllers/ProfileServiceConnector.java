@@ -7,6 +7,7 @@ import play.libs.Json;
 import play.libs.ws.WS;
 import play.libs.ws.WSRequestHolder;
 import play.libs.ws.WSResponse;
+import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import services.auth.TokenAuthenticator;
@@ -16,19 +17,13 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static play.mvc.Controller.request;
-import static play.mvc.Controller.response;
-import static play.mvc.Http.HeaderNames.CONTENT_TYPE;
-import static play.mvc.Http.Status.OK;
-import static play.mvc.Results.ok;
-
 
 /**
  * Created by Kris on 2015-05-15.
  *
  * Remade by Marek
  */
-public class ProfileServiceConnector {
+public class ProfileServiceConnector extends Controller {
     private static final long TIMEOUT = 60000;
     static String serviceUrl = "https://goparty-profile.herokuapp.com/profiles/";
 
@@ -58,10 +53,16 @@ public class ProfileServiceConnector {
         request().headers().forEach((key, values) -> Arrays.asList(values).forEach(value -> url.setHeader(key, value)));
         Promise<WSResponse> promise = method.applyMethod(url);
 
-        Promise<String> nodePromise = promise.map(new Function<WSResponse, String>() {
+        Promise<Status> nodePromise = promise.map(new Function<WSResponse, Status>() {
 
             @Override
-            public String apply(WSResponse wsResponse) throws Throwable {
+            public Status apply(WSResponse wsResponse) throws Throwable {
+                if (wsResponse.getStatus() == NOT_FOUND) {
+                    UpdateConnector.updateG(user.get("userId").asText());
+
+                    wsResponse = method.applyMethod(url).get(TIMEOUT);
+                }
+
                 if (wsResponse.getStatus() != OK) {
                     Map<String, String> ret = new LinkedHashMap<>();
                     ret.put("status", String.valueOf(wsResponse.getStatus()));
@@ -70,16 +71,16 @@ public class ProfileServiceConnector {
                     ret.put("message", new String(wsResponse.asByteArray()));
 
                     response().setHeader(CONTENT_TYPE, "application/json");
-                    return Json.toJson(ret).toString();
+                    return status(wsResponse.getStatus(), Json.toJson(ret).toString());
                 }
 
                 wsResponse.getAllHeaders().forEach((key, values) -> values.forEach(value -> response().setHeader(key, value)));
 
-                return new String(wsResponse.asByteArray());
+                return ok(new String(wsResponse.asByteArray()));
             }
         });
 
-        return ok(nodePromise.get(TIMEOUT));
+        return nodePromise.get(TIMEOUT);
     }
 
     @Security.Authenticated(TokenAuthenticator.class)
