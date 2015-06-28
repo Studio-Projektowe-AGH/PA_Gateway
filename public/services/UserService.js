@@ -8,7 +8,7 @@
 angular.module('UserModule', [])
     .factory('UserService', ['$http', function ($http) {
         var service = {};
-        var url = "https://goparty-gateway.herokuapp.com";
+
 
         service.GetById = GetById;
         service.GetByUsername = GetByUsername;
@@ -24,7 +24,7 @@ angular.module('UserModule', [])
         function SignUp(userData, successCallback, errorCallback) {
             var config = {
                 method: 'POST',
-                url: url + "/auth/signup",
+                url: "/auth/signup",
                 data: angular.toJson(userData),
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ angular.module('UserModule', [])
             userData.providerName = "facebook";
             var config = {
                 method: 'POST',
-                url: url + "/auth/signin/facebook",
+                url: "/auth/signin/facebook",
                 data: angular.toJson(userData),
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ angular.module('UserModule', [])
         }
 
         function SignOut(email, successCallback) {
-            return $http.get(url + "/auth/signout/" + email).then(successCallback, handleError('Error in signing out"'));
+            return $http.get("/auth/signout/" + email).then(successCallback, handleError('Error in signing out"'));
 
         }
 
@@ -75,12 +75,12 @@ angular.module('UserModule', [])
 
         function GetBusinessProfile(successCallback) {
             //alert("funkcja");
-            return $http.get(url + '/profiles/business').then(successCallback, handleError('Error getting business profile'));
+            return $http.get('/profiles/business').then(successCallback, handleError('Error getting business profile'));
         }
 
 
         function GetByUsername(username, successCallback) {
-            return $http.get(url + '/user/' + username).then(successCallback, handleError('Error getting user by username'));
+            return $http.get('/user/' + username).then(successCallback, handleError('Error getting user by username'));
         }
 
         function handleSuccess(dataFromServer, status, headers, config) {
@@ -91,7 +91,7 @@ angular.module('UserModule', [])
         function UpdateBusinessProfile(user_edit, handleSuccess, handleError) {
                 var config = {
                     method: 'PUT',
-                    url: url + "/profile",
+                    url: "/profile",
                     data: angular.toJson(user_edit),
                     headers: {
                         'Content-Type': 'application/json',

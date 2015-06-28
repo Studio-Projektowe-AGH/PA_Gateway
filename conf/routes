@@ -22,6 +22,10 @@ POST           /profile                                            controllers.P
 DELETE         /profile                                            controllers.ProfileServiceConnector.profileDelete()
 PUT            /profile                                            controllers.ProfileServiceConnector.profilePut()
 
+#### Rekomendacje
+GET            /profile/recommended/clubs                          controllers.Recommendation.clubsGet(count:Int ?= 10, x:Double, y:Double)
+
+
 ###### Testowe usugi
 GET            /profiles/business/all                              controllers.ProfileServiceConnector.getLocalList()
 
