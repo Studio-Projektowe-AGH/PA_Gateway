@@ -38,7 +38,7 @@ angular.module('UserModule', [])
         function SignIn(userData, handleSuccess, handleError) {
             var config = {
                 method: 'POST',
-                url: url + "/auth/signin/credentials",   //"/auth/signin",
+                url:  "/auth/signin/credentials",   //"/auth/signin",
                 data: angular.toJson(userData),
                 headers: {
                     'Content-Type': 'application/json',

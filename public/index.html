@@ -15,8 +15,109 @@
 
 
 </head>
-<body ng-app="myApp" >
-<div ng-view=""></div>
+<body ng-app="myApp">
+
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">GoParty, {{user.name}}</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i
+                            class="glyphicon glyphicon-user"></i> {{user.username}} <span class="caret"></span></a>
+                    <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                        <li><a href="#">My Profile</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" ng-click="logout()"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <!-- Left column -->
+
+            <ul class="nav nav-stacked">
+                <li class="nav-header"><a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i
+                        class="glyphicon glyphicon-chevron-down"></i></a>
+                    <ul class="nav nav-stacked collapse in" id="userMenu">
+                        <li class="active"><a href="#"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Messages <span
+                                class="badge badge-info">4</span></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i> Options</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-glass"></i> Events</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-exclamation-sign"></i> Rules</a></li>
+                        <li><a href="#" ng-click="logout()"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+
+            <!--TUTAJ NAWAZNIEJSZA CZESC!!!!-->
+
+            <div ng-view=""></div>
+
+
+        </div>
+
+        <!--pRZEMYSLEC CZY NIE USUNAC!-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="glyphicon glyphicon-wrench pull-right"></i>
+                    <h4>Add Event</h4>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form form-vertical">
+                    <div class="control-group">
+                        <label>Name</label>
+
+                        <div class="controls">
+                            <input class="form-control" placeholder="Enter Name" type="text">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Message</label>
+
+                        <div class="controls">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Category</label>
+
+                        <div class="controls">
+                            <select class="form-control">
+                                <option>options</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label></label>
+
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <!--skrypty projektu-->
 <script src="appModule.js"></script>
