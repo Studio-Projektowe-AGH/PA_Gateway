@@ -1,5 +1,5 @@
 angular.module('myApp',
-    ['ngRoute', 'ngCookies', 'facebook', 'AuthenticationModule', 'UserModule', 'RegisterModule', 'HomeModule', 'LoginModule'])
+    ['ngRoute', 'ngCookies', 'facebook', 'AuthenticationModule', 'UserModule', 'RegisterModule', 'HomeModule', 'LoginModule', 'ngMessages'])
     .config(['FacebookProvider', function(FacebookProvider){
         FacebookProvider.init('504846879664518');
     }])
@@ -62,6 +62,10 @@ angular.module('myApp',
             .when('/home', {
                 controller: 'HomeCtrl',
                 templateUrl: 'views/home.html'
+            })
+            .when('/stats', {
+                controller:'StatsCtrl',
+                templateUrl: 'views/statView.html'
             })
             .when('/login', {
                 controller: 'LoginCtrl',
