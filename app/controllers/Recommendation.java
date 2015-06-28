@@ -1,11 +1,8 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import play.Logger;
-import play.libs.F;
 import play.libs.Json;
 import play.libs.ws.WS;
-import play.libs.ws.WSRequestHolder;
 import play.libs.ws.WSResponse;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -25,19 +22,14 @@ public class Recommendation extends Controller {
         JsonNode user = Json.parse(request().username());
         String queryUrl = serviceUrl + "recommend/clubs/" + user.get("userId").asText();
 
-        Logger.debug(queryUrl + "?x=" + x + "&y=" + y + "&count=" + count);
-        final WSRequestHolder wsRequestHolder = WS.url(queryUrl + "?x=1" + "&y=2" + /*(int)y*/ /*+*/ "&count=" + count);
-//                .setQueryParameter("x", String.valueOf(x))
-//                .setQueryParameter("y", y);
-//                .setQueryParameter("count", String.valueOf(count));
-
-        final F.Promise<WSResponse> wsResponsePromise = wsRequestHolder
-                .get();
-
-        final JsonNode map = wsResponsePromise
+        final JsonNode node = WS.url(queryUrl)
+                .setQueryParameter("x", String.valueOf(x))
+                .setQueryParameter("y", String.valueOf(y))
+                .setQueryParameter("count", String.valueOf(count))
+                .get()
                 .map(WSResponse::asJson)
                 .get(60000);
 
-        return ok(map);
+        return ok(node);
     }
 }
