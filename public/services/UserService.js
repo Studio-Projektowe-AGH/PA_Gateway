@@ -8,14 +8,12 @@
 angular.module('UserModule', [])
     .factory('UserService', ['$http', function ($http) {
         var service = {};
+        var url = "https://goparty-gateway.herokuapp.com";
 
         service.GetById = GetById;
         service.GetByUsername = GetByUsername;
         service.GetBusinessProfile = GetBusinessProfile;
         service.UpdateBusinessProfile = UpdateBusinessProfile;
-        service.Create = Create;
-        service.Update = Update;
-        service.Delete = Delete;
         service.SignUp = SignUp;
         service.SignIn = SignIn;
         service.SignInFacebook = SignInFacebook;
@@ -26,7 +24,7 @@ angular.module('UserModule', [])
         function SignUp(userData, successCallback, errorCallback) {
             var config = {
                 method: 'POST',
-                url: "/auth/signup",
+                url: url + "/auth/signup",
                 data: angular.toJson(userData),
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +38,7 @@ angular.module('UserModule', [])
         function SignIn(userData, handleSuccess, handleError) {
             var config = {
                 method: 'POST',
-                url: "/auth/signin/credentials",   //"/auth/signin",
+                url: url + "/auth/signin/credentials",   //"/auth/signin",
                 data: angular.toJson(userData),
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +52,7 @@ angular.module('UserModule', [])
             userData.providerName = "facebook";
             var config = {
                 method: 'POST',
-                url: "/auth/signin/facebook",
+                url: url + "/auth/signin/facebook",
                 data: angular.toJson(userData),
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +63,7 @@ angular.module('UserModule', [])
         }
 
         function SignOut(email, successCallback) {
-            return $http.get("/auth/signout/" + email).then(successCallback, handleError('Error in signing out"'));
+            return $http.get(url + "/auth/signout/" + email).then(successCallback, handleError('Error in signing out"'));
 
         }
 
@@ -77,28 +75,12 @@ angular.module('UserModule', [])
 
         function GetBusinessProfile(successCallback) {
             //alert("funkcja");
-            return $http.get('/profiles/business').then(successCallback, handleError('Error getting business profile'));
+            return $http.get(url + '/profiles/business').then(successCallback, handleError('Error getting business profile'));
         }
 
 
         function GetByUsername(username, successCallback) {
-            return $http.get('/user/' + username).then(successCallback, handleError('Error getting user by username'));
-        }
-
-        //function GetByUsername(username, successCallback) {
-        //    return $http.get('https://profile-service.herokuapp.com/userProfile/5554f84952423afe1e6ebdcf' + username).then(successCallback, handleError('Error getting user by username'));
-        //}
-
-        function Create(user) {
-            return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));
-        }
-
-        function Update(user) {
-            return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
-        }
-
-        function Delete(user) {
-            return $http.delete('/api/users/' + user.id).then(handleSuccess, handleError('Error deleting user'));
+            return $http.get(url + '/user/' + username).then(successCallback, handleError('Error getting user by username'));
         }
 
         function handleSuccess(dataFromServer, status, headers, config) {
@@ -109,7 +91,7 @@ angular.module('UserModule', [])
         function UpdateBusinessProfile(user_edit, handleSuccess, handleError) {
                 var config = {
                     method: 'PUT',
-                    url: "/profile",
+                    url: url + "/profile",
                     data: angular.toJson(user_edit),
                     headers: {
                         'Content-Type': 'application/json',
