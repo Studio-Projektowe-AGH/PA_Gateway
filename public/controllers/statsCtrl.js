@@ -24,6 +24,9 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                 tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
             }]
         };
+        $scope.dataArea = {
+
+        };
 
         $scope.dataBar = {
             series: ['Liczba sprzedanych koktaili', 'Liczba sprzedanych piw'],
@@ -71,6 +74,8 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
             if($scope.aggregate == "day"){
                 stat.getDayStats($scope.requestData, function(response){
                         $scope.localData = response.data;
+                        alert($scope.localData);
+                       $scope.pieDiagram();
                     }, function(err){
 
                     })
