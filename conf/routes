@@ -25,6 +25,8 @@ PUT            /profile                                            controllers.P
 #### Rekomendacje
 GET            /profile/recommended/clubs                          controllers.Recommendation.clubsGet(count:Int ?= 10, x:Double, y:Double)
 
+POST           /profile/stats/value                                controllers.StatsConnector.postValue()
+POST           /profile/stats/ratio                                controllers.StatsConnector.postRatio()
 
 ###### Testowe usugi
 GET            /profiles/business/all                              controllers.ProfileServiceConnector.getLocalList()
