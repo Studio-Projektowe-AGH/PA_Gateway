@@ -10,15 +10,21 @@ import java.text.ParseException;
 
 /**
  * Created by Kris on 2015-05-15.
+ *
  */
 public class TokenAuthenticator extends Security.Authenticator {
     @Override
     public String getUsername(Http.Context context) {
-        String auth_token = context.request().getHeader("Authorization").split(" ")[1];
-        if(auth_token == null)
+
+        final String authorization = context.request().getHeader("Authorization");
+        if (authorization == null) {
+            return null;
+        }
+        String auth_token = authorization.split(" ")[1];
+        if (auth_token == null)
             return null;
 
-        JsonNode userIds = null;
+        JsonNode userIds;
         try {
             userIds = AuthorizationService.getUserIds(auth_token);
         } catch (ParseException e) {
