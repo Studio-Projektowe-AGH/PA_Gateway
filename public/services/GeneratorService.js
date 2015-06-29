@@ -72,6 +72,4 @@ angular.module('GeneratorModule', [])
             return [year, month, day, hour, min];
 
         }
-
-
     }]);
