@@ -13,9 +13,9 @@
         <br/>
         <form name="dateForm" class="form-group">
             <label for="dateFrom">Czas od: </label>
-            <input id="dateFrom" type="date" name="input" ng-model="requestData.date_from" placeholder="dd-MM-yyyy" min="30-12-2012" max="getTodayDate()" required />
+            <input id="dateFrom" type="date" name="input" ng-model="requestData.date_from" placeholder="yyyy-MM-dd" min="30-12-2012" max="getTodayDate()" required />
             <label for="dateTo"> do: </label>
-            <input id="dateTo" type="date" name="input" ng-model="requestData.date_to" placeholder="dd-MM-yyyy gg:mm" min="dateFromWithTime" max="getTodayDateAndTime()" required />
+            <input id="dateTo" type="date" name="input" ng-model="requestData.date_to" placeholder="yyyy-MM-dd gg:mm" min="dateFromWithTime" max="getTodayDateAndTime()" required />
             <label for="aggregateType"> agreguj po: </label>
             <select id="aggregateType" ng-model = "requestData.aggregate" >
                 <option value="hour">Godzina</option>
