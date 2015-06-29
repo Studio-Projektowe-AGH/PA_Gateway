@@ -21,8 +21,16 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                     x: x[0],
                     y: [120, 122, 50, 55, 100, 310, 200]
                 }, {
-                    x: x[0],
-                    y: [400, 520, 190, 199, 290, 700, 800],
+                    x: x[1],
+                    y: [50,55],
+                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                },{
+                    x: x[2],
+                    y: [60,90],
+                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                },{
+                    x: x[3],
+                    y: [100, 54],
                     tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                 }]
             };
