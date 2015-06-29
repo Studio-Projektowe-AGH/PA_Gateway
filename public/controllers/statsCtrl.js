@@ -60,7 +60,7 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
             };
             $scope.dataArea = {};
 
-            $scope.dataBar = {
+            $scope.dataPie = {
                 series: ['Liczba sprzedanych koktaili', 'Liczba sprzedanych piw'],
                 data: [{
                     x: "piwo",
@@ -71,7 +71,6 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                 }, {
                     x: "wódka",
                     y: [132, 23],
-                    tooltip: "sztuk sprzedanych napoji"
                 }]
             };
             $scope.config = {
