@@ -6,14 +6,16 @@ angular.module('StatsServiceModule', [])
     //     /business_stats/values
     //    /business_stats/ratio
         var service = {};
+        service.getDayStats = getDayStats;
+        service.getWeekStats = getWeekStats;
         var request = {
           value : "total visits",
             date_from : "2015-06-01",
             date_to : "2015-06-12 12:00",
             aggregate : "day"
         };
-        service.getDayStats = getDayStats;
-        service.getWeekStats = getWeekStats;
+
+        return service;
 
         function getDayStats(data, successCallback, errorCallback){
             request.value = data.value;
