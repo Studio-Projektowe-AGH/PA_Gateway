@@ -80,7 +80,7 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                     y: [32, 12]
                 }, {
                     x: "wódka",
-                    y: [132, 23],
+                    y: [132, 23]
                 }]
             };
             $scope.config = {
