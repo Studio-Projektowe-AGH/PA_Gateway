@@ -18,10 +18,10 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
             $scope.dataLine = {
                 series: ['odwiedziny', 'sprzedaz calkowita'],
                 data: [{
-                    x: x,
+                    x: x[0],
                     y: [120, 122, 50, 55, 100, 310, 200]
                 }, {
-                    x: x,
+                    x: x[0],
                     y: [400, 500, 190, 199, 290, 700, 800],
                     tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                 }]
@@ -43,6 +43,11 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                     },
                     {
                         x: x[3],
+                        y: [20, 61, 124],
+                        tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                    },
+                    {
+                        x: x[4],
                         y: [20, 61, 124],
                         tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                     }]
