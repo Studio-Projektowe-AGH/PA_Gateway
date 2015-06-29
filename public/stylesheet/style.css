@@ -47,10 +47,12 @@
     padding: 5px;
     color: white;
 }
+/*WYKRESY!!!! */
 .chart {
     width: 500px;
     height: 500px;
 }
+/*Koniec wykresu*/
 body, html {
     height: 100%;
     background-repeat: repeat;
