@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import play.Logger;
 import play.libs.Json;
 import play.libs.ws.WS;
 import play.libs.ws.WSResponse;
@@ -19,8 +20,14 @@ public class Recommendation extends Controller {
 
     @Security.Authenticated(TokenAuthenticator.class)
     public static Result clubsGet(int count, double x, double y) {
-        JsonNode user = Json.parse(request().username());
+        final String username = request().username();
+        if (username == null) {
+            return unauthorized();
+        }
+        JsonNode user = Json.parse(username);
         String queryUrl = serviceUrl + "recommend/clubs/" + user.get("userId").asText();
+
+        Logger.debug(user.get("userId").asText());
 
         final JsonNode node = WS.url(queryUrl)
                 .setQueryParameter("x", String.valueOf(x))
