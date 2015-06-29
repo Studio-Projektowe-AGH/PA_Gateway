@@ -1,7 +1,7 @@
 /**
  * Created by Dominika on 2015-06-28.
  */
-angular.module('StatsModule', [])
+angular.module('StatsServiceModule', [])
 .factory('StatsService', ['$http', '$rootScope', function($http, $rootScope){
     //     /business_stats/values
     //    /business_stats/ratio

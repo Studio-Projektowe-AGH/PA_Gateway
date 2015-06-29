@@ -1,7 +1,7 @@
 /**
  * Created by Dominika on 2015-06-28.
  */
-angular.module('StatsModule', ['angularCharts', 'StatsModule', 'GeneratorModule'])
+angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'GeneratorModule'])
     .controller('StatsCtrl', ['$scope', '$rootScope', 'StatService', 'GeneratotService', function ($scope, $rootScope, stat, generator) {
         $scope.requestData = {
             value: "total visits",
