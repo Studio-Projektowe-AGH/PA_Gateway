@@ -31,7 +31,10 @@ angular.module('myApp',
         //keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
         if ($rootScope.globals.currentUser) {
+            $rootScope.isLogged = true;
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + $rootScope.globals.currentUser.access_token;
+        }else{
+            $rootScope.isLogged = false;
         }
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {

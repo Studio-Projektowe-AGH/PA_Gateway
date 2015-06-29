@@ -18,7 +18,7 @@
 
 
 
-<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+<div ng-show = "isLogged" id="top-nav" class="navbar navbar-inverse navbar-static-top">
 <div class="container-fluid">
 <div class="navbar-header">
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,7 +44,7 @@ class="glyphicon glyphicon-user"></i> {{user.username}} <span class="caret"></sp
 </div>
 <div class="container-fluid">
 <div class="row">
-<div class="col-sm-3">
+<div class="col-sm-3" ng-show = "isLogged" >
     <!-- Left column -->
 
 <ul class="nav nav-stacked">
@@ -72,53 +72,6 @@ class="glyphicon glyphicon-user"></i> {{user.username}} <span class="caret"></sp
 
 
 </div>
-
-    <!--pRZEMYSLEC CZY NIE USUNAC!-->
-    <!--<div class="panel panel-default">-->
-    <!--<div class="panel-heading">-->
-    <!--<div class="panel-title">-->
-<!--<i class="glyphicon glyphicon-wrench pull-right"></i>-->
-<!--<h4>Add Event</h4>-->
-<!--</div>-->
-<!--</div>-->
-    <!--<div class="panel-body">-->
-    <!--<form class="form form-vertical">-->
-    <!--<div class="control-group">-->
-<!--<label>Name</label>-->
-
-    <!--<div class="controls">-->
-    <!--<input class="form-control" placeholder="Enter Name" type="text">-->
-<!--</div>-->
-<!--</div>-->
-    <!--<div class="control-group">-->
-<!--<label>Message</label>-->
-
-    <!--<div class="controls">-->
-<!--<textarea class="form-control"></textarea>-->
-<!--</div>-->
-<!--</div>-->
-    <!--<div class="control-group">-->
-<!--<label>Category</label>-->
-
-    <!--<div class="controls">-->
-    <!--<select class="form-control">-->
-<!--<option>options</option>-->
-<!--</select>-->
-<!--</div>-->
-<!--</div>-->
-    <!--<div class="control-group">-->
-<!--<label></label>-->
-
-    <!--<div class="controls">-->
-    <!--<button type="submit" class="btn btn-primary">-->
-    <!--Add-->
-<!--</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>-->
-
 </div>
 </div>
 

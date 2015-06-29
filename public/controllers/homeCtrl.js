@@ -34,8 +34,6 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
                     }
                 }
 
-
-
                 //{
                 //    "name":"Nazwa Klubu,
                 //    "category_list":[ bar, klub, restauracja, dyskoteka]
@@ -58,7 +56,7 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
             });
         })();
         $scope.email = $rootScope.globals.currentUser.email;
-        $scope.logout = function () {
+        $rootScope.logout = function () {
             AuthenticationService.ClearCredentials();
             UserService.SignOut($scope.user.email, function (response) {
                 AuthenticationService.ClearCredentials();
