@@ -58,6 +58,15 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
             }
       };
 
+        $scope.getTodayDate= function(){
+            return generator.getNowDateStamp();
+        };
+        $scope.getTodayDateAndTime = function(){
+            return generator.getNowDateAndTime();
+        };
+
+        $scope.dateFromWithTime = $scope.date_from + " 02:00";
+
         $scope.getData = function () {
             if($scope.aggregate == "day"){
                 stat.getDayStats($scope.requestData, function(response){

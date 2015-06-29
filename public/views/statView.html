@@ -15,15 +15,15 @@
         <br/>
         <form name="dateForm" class="form-group">
             <label for="dateFrom">Czas od: </label>
-            <input id="dateFrom" type="date" name="input" ng-model="date.from" placeholder="dd-MM-yyyy" min="30-12-2012" max="20-06-2015" required />
+            <input id="dateFrom" type="date" name="input" ng-model="requestData.date_from" placeholder="dd-MM-yyyy" min="30-12-2012" max="getTodayDate()" required />
             <label for="dateTo"> do: </label>
-            <input id="dateTo" type="date" name="input" ng-model="date.to" placeholder="dd-MM-yyyy" min="30-12-2012" max="20-06-2015" required />
+            <input id="dateTo" type="date" name="input" ng-model="requestData.date_to" placeholder="dd-MM-yyyy gg:mm" min="dateFromWithTime" max="getTodayDateAndTime()" required />
             <label for="aggregateType"> agreguj po: </label>
-            <select id="aggregateType" >
-                <option>Godzina</option>
-                <option>Dzien</option>
-                <option>Tydzien</option>
-                <option>Miesiac</option>
+            <select id="aggregateType" ng-model = "requestData.aggregate" >
+                <option value="hour">Godzina</option>
+                <option value="day">Dzien</option>
+                <option value="week">Tydzien</option>
+                <option  value="month">Miesiac</option>
             </select>
         </form>
 

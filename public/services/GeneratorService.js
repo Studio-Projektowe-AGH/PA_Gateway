@@ -3,7 +3,7 @@ angular.module('GeneratorModule', [])
      var service = {};
         service.getNowDateStamp = getNowDateStamp;
         service.getNowTimeStamp = getNowTimeStamp;
-        service.getNotDateAndTime = getNowDateAndTime;
+        service.getNowDateAndTime = getNowDateAndTime;
         service.getArrayOfDays = genArrayOfDays;
         service.getArrayOfMonths = genArrayOfMonts;
 
