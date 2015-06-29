@@ -19,20 +19,17 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                 series: ['odwiedziny', 'sprzedaz calkowita'],
                 data: [{
                     x: x[0],
-                    y: [120, 122, 50, 55, 100, 310, 200]
+                    y: [120, 122]
                 }, {
                     x: x[1],
                     y: [50,55],
-                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
-                },{
+                    },{
                     x: x[2],
                     y: [60,90],
-                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
-                },{
+                    },{
                     x: x[3],
                     y: [100, 54],
-                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
-                }]
+                      }]
             };
             $scope.dataBar = {
                 series: ['piwo', 'wodka', 'drinki', 'promocyje'],
@@ -41,22 +38,22 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
                     y: [12, 18, 50, 100]
                 }, {
                     x: x[1],
-                    y: [40, 50, 190],
+                    y: [40, 50, 190, 43],
                     tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                 },
                     {
                         x: x[2],
-                        y: [20, 51, 90],
+                        y: [20, 51, 90,60],
                         tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                     },
                     {
                         x: x[3],
-                        y: [20, 61, 124],
+                        y: [20, 61, 124,70],
                         tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                     },
                     {
                         x: x[4],
-                        y: [20, 61, 124],
+                        y: [20, 61, 124,90],
                         tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
                     }]
             };
