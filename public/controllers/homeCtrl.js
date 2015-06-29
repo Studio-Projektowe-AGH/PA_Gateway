@@ -60,7 +60,9 @@ angular.module('HomeModule', ['UserModule', 'AuthenticationModule'])
             AuthenticationService.ClearCredentials();
             UserService.SignOut($scope.user.email, function (response) {
                 AuthenticationService.ClearCredentials();
-                $rootScope.isLogged = false;
+                $rootScope.$apply(function(){
+                    $rootScope.isLogged = false;
+                });
                 $location.path('/login');
             });
         };
