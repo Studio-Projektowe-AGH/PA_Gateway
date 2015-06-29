@@ -19,6 +19,9 @@ angular.module('LoginModule', ['facebook','AuthenticationModule', 'FacebookModul
 
                 UserService.SignIn(user, function (response) {
                     AuthenticationService.SetCredentials(response.data.access_token, user.email);
+                    $rootScope.$apply(function(){
+                        $rootScope.isLogged = true;
+                    });
                     $location.path('/home');
                     $scope.dataLoading = false;
                 }, function (response) {
@@ -56,6 +59,9 @@ angular.module('LoginModule', ['facebook','AuthenticationModule', 'FacebookModul
                         //    };
                             UserService.SignInFacebook(data, function (response2) {
                                 AuthenticationService.SetCredentials(response2.data.access_token, response.email);
+                                $rootScope.$apply(function(){
+                                    $rootScope.isLogged = true;
+                                });
                                 $location.path('/home');
                                 $scope.dataLoading = false;
                             })
