@@ -14,6 +14,39 @@ angular.module('StatsModule', ['angularCharts', 'StatsServiceModule', 'Generator
             $scope.cos = "43\nIlosc kodow QR: 18";
             $scope.diagType = "";
             $scope.types = ["pie", "line", "bar", "area", "point"];
+            var x = ["2015-03-20", "2015-03-21", "2015-03-22", "2015-03-23", "2015-03-24", "2015-03-25" ]
+            $scope.dataLine = {
+                series: ['odwiedziny', 'sprzedaz calkowita'],
+                data: [{
+                    x: x,
+                    y: [120, 122, 50, 55, 100, 310, 200]
+                }, {
+                    x: x,
+                    y: [400, 500, 190, 199, 290, 700, 800],
+                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                }]
+            };
+            $scope.dataBar = {
+                series: ['piwo', 'wodka', 'drinki', 'promocyje'],
+                data: [{
+                    x: x[0],
+                    y: [12, 18, 50, 100]
+                }, {
+                    x: x[1],
+                    y: [40, 50, 190],
+                    tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                },
+                    {
+                        x: x[2],
+                        y: [20, 51, 90],
+                        tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                    },
+                    {
+                        x: x[3],
+                        y: [20, 61, 124],
+                        tooltip: "jakis tooltip3 + $scope.cos" + $scope.cos
+                    }]
+            };
             $scope.data = {
                 series: ['One seires', 'Income'],
                 data: [{
